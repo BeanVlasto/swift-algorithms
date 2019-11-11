@@ -14,7 +14,7 @@ class Sorting_Test: XCTestCase {
         
         //arrange
         let sorting = Sorting()
-        let testCases = [(input: [1], expected: [1]),(input: [100,23412,324], expected: [100,324,23412])]
+        let testCases = [(input: [1], expected: [1]),(input: [23412,324,100], expected: [100,324,23412])]
      
         //act
         //assert
@@ -25,7 +25,7 @@ class Sorting_Test: XCTestCase {
         }
     }
     
-    func testMergeWithTwoIntegerArraysReturnsInOrderMergedIntegerArray() {
+    /*func testMergeWithTwoIntegerArraysReturnsInOrderMergedIntegerArray() {
         
         //arrange
         let sorting = Sorting()
@@ -37,6 +37,61 @@ class Sorting_Test: XCTestCase {
             let actual = sorting.merge(leftArray: testCase.array1, rightArray: testCase.array2)
             XCTAssertEqual(actual, testCase.expected)
         }
+    }*/
+    
+    func testLinearSearchReturnsTrueIfTargetValueIsFoundAndFalseIfNotWhenSearchedForInMulitpleArraysOfIntegers() {
+        
+        //arrange
+        let sorting = Sorting()
+        let testCases = [(array: [5,3,15235,717,42,8], target: 8, expected: true), (array: [554,12,3,13,2,5], target: 8, expected: false)]
+        
+        //act
+        //assert
+        for testCase in testCases {
+            let actual = sorting.linearSearch(array: testCase.array, target: testCase.target)
+            XCTAssertEqual(actual, testCase.expected)
+        }
     }
     
+    func testBinarySearchReturnsTrueIfTargetValueIsFoundAndFalseIfNotWhenSearchedForInMulitpleArraysOfIntegers() {
+        
+        //arrange
+        let sorting = Sorting()
+        let testCases = [(array: [5,3,15235,717,42,8], target: 8, expected: true), (array: [554,12,3,13,2,5], target: 8, expected: false)]
+        
+        //act
+        //assert
+        for testCase in testCases {
+            let actual = sorting.binarySearch(array: testCase.array, target: testCase.target)
+            XCTAssertEqual(actual, testCase.expected)
+        }
+    }
+    
+    func testQuickSortWithMultipleIntegerArraysReturnsSortedIntegerArrays() {
+        
+        //arrange
+        let sorting = Sorting()
+        let testCases = [(input: [40,3,-6,-1000,17], expected: [-1000,-6,3,17,40]),(input: [23412,324,100], expected: [100,324,23412])]
+        
+        //act
+        //assert
+        for testCase in testCases {
+            let actual = sorting.quickSort(array: testCase.input)
+            XCTAssertEqual(actual, testCase.expected)
+        }
+    }
+    
+    func testInsertionSortWithMulitpleIntegerArraysReturnsSortedIntegerArrays() {
+        
+        //arrange
+        let sorting = Sorting()
+        let testCases = [(input: [40,3,-6,-1000,17], expected: [-1000,-6,3,17,40]),(input: [23412,324,100], expected: [100,324,23412])]
+        
+        //act
+        //assert
+        for testCase in testCases {
+            let actual = sorting.insertionSort(array: testCase.input)
+            XCTAssertEqual(actual, testCase.expected)
+        }
+    }
 }
