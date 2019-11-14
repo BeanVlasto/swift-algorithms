@@ -9,6 +9,7 @@
 import Foundation
 
 class Sorting {
+    
     func bubbleSort(data: [Int]) -> [Int] {
         var array = data
         var swapMade = true
