@@ -29,12 +29,12 @@ class Sorting_Test: XCTestCase {
         
         //arrange
         let sorting = Sorting()
-        let testCases = [(array1: [10,5,5,23,71,314,6], expected: [5,5,6,10,23,71,314]),(array1: [100,50,25,12,6,3,1], expected: [1,3,6,12,25,50,100])]
+        let testCases = [(array: [10,5,5,23,71,314,6], expected: [5,5,6,10,23,71,314]),(array: [100,50,25,12,6,3,1], expected: [1,3,6,12,25,50,100])]
         
         //act
         //assert
         for testCase in testCases {
-            let actual = sorting.mergeSort(leftArray: testCase.array1, rightArray: testCase.array2)
+            let actual = sorting.mergeSort(array: testCase.array)
             XCTAssertEqual(actual, testCase.expected)
         }
     }
