@@ -10,6 +10,7 @@ import Foundation
 
 class Sorting {
     
+	
     func bubbleSort(data: [Int]) -> [Int] {
         var array = data
         var swapMade = true
@@ -26,25 +27,55 @@ class Sorting {
         }
         return array
     }
-    
-    func merge(leftArray: [Int], rightArray: [Int]) -> [Int] {
-        var sortedArray = [Int]()
-        var leftIndex = 0
-        var rightIndex = 0
-        while leftIndex < leftArray.count {
-            while rightIndex < rightArray.count {
-                if leftArray[leftIndex] < rightArray[rightIndex] || leftIndex == leftArray.count {
-                    sortedArray.append(leftArray[leftIndex])
-                    leftIndex += 1
-                } else if rightArray[rightIndex] <= leftArray[leftIndex] || rightIndex == rightArray.count {
-                    sortedArray.append(rightArray[rightIndex])
-                    rightIndex += 1
-                }
-            }
-        }
-        return sortedArray
+	
+	
+    func merge(leftArray: [Int], rightArray: [Int) -> [Int] {
+	var sortedArray = [Int]()
+  	var leftIndex = 0
+  	var rightIndex = 0
+  	while leftIndex < leftArray.count && rightIndex < rightArray.count {
+    		if leftArray[leftIndex] < rightArray[rightIndex] {
+      			sortedArray.append(leftArray[leftIndex])
+      			leftIndex += 1
+      			if leftIndex == leftArray.count {
+        			guard rightIndex != rightArray.count else {
+          				return sortedArray
+        			}
+        			for _ in rightIndex ..< rightArray.count {
+          				sortedArray.append(rightArray[rightIndex])
+          				rightIndex += 1
+        			}
+        			return sortedArray
+      			}
+    		} else {
+      			sortedArray.append(rightArray[rightIndex])
+      			rightIndex += 1
+      			if rightIndex == rightArray.count {
+        			guard leftIndex != leftArray.count else {
+          				return sortedArray
+        			}
+        			for _ in leftIndex ..< leftArray.count {
+          				sortedArray.append(leftArray[leftIndex])
+          				leftIndex += 1
+        			}
+        			return sortedArray
+      			}
+    		}
+  	}
+  	return sortedArray
     }
     
+    func mergeSort(array: [Int]) -> [Int] {
+        if array.count > 1 {
+		let leftArray = Array(array[0 ..< Int(array.count / 2)])
+    		let rightArray = Array(array[Int(array.count / 2) ... array.count - 1])
+    		return merge(leftArray: mergeSort(array: leftArray), rightArray: mergeSort(array: rightArray))
+  	} else {
+    		return array
+  	}
+    }
+    
+	       
     func linearSearch(array: [Int], target: Int) -> Bool {
         var foundIt = false
         for element in array {
@@ -61,9 +92,9 @@ class Sorting {
         return foundIt
     }
     
+	       
     func binarySearch(array: [Int], target: Int) -> Bool {
         let sortedArray = bubbleSort(data: array)
-        
         var foundIt = false
         var bottom = 0
         var top = sortedArray.count - 1
@@ -84,6 +115,7 @@ class Sorting {
         }
     }
     
+	       
     func quickSort(array: [Int]) -> [Int] {
         if array.count <= 1 {
               return array
@@ -107,6 +139,7 @@ class Sorting {
         }
     }
     
+	       
     func insertionSort(array: [Int]) -> [Int] {
         if array.count <= 1 {
             return array
@@ -128,7 +161,9 @@ class Sorting {
                 }
             }
             return sortedArray
-        }
+	}
     }
+	       
+	       
 }
 			
