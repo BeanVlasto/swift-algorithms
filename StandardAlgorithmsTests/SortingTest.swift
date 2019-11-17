@@ -25,19 +25,19 @@ class Sorting_Test: XCTestCase {
         }
     }
     
-    /*func testMergeWithTwoIntegerArraysReturnsInOrderMergedIntegerArray() {
+    func testMergeSortWithMultipleUnsortedIntegerArraysReturnsSortedIntegerArrays() {
         
         //arrange
         let sorting = Sorting()
-        let testCases = [(array1: [2,5], array2: [1,6], expected: [1,2,5,6]),(array1: [3,6], array2: [2,7], expected: [2,3,6,7])]
+        let testCases = [(array1: [10,5,5,23,71,314,6], expected: [5,5,6,10,23,71,314]),(array1: [100,50,25,12,6,3,1], expected: [1,3,6,12,25,50,100])]
         
         //act
         //assert
         for testCase in testCases {
-            let actual = sorting.merge(leftArray: testCase.array1, rightArray: testCase.array2)
+            let actual = sorting.mergeSort(leftArray: testCase.array1, rightArray: testCase.array2)
             XCTAssertEqual(actual, testCase.expected)
         }
-    }*/
+    }
     
     func testLinearSearchReturnsTrueIfTargetValueIsFoundAndFalseIfNotWhenSearchedForInMulitpleArraysOfIntegers() {
         
